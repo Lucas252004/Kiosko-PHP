@@ -30,7 +30,7 @@
     </div>
     </nav>
     <!--Formulario para añadir productos-->
-    <div align="center" style="background-color: $gray-500;">
+    <div align="center" style="background-color: #DEDEDE; ">
         <form action="../index.php" method="POST" enctype="multipart/form-data" style="padding: 10px; margin: 10px;">
             <input type="text" name="nombre" placeholder="Nombre del Producto"style="padding: 10px; margin: 10px;"><br>
             <input type="text" name="descripcion" placeholder="Descripcion"style="padding: 10px; margin: 10px;"><br>
@@ -42,7 +42,6 @@
             <input type="submit" value="Añadir producto" >
         </form>
     </div>
-
 
 </body>
 </html>
