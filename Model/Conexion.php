@@ -6,9 +6,9 @@ class Conexion{
     public function __construct()
     {
         //me conecto a la base de datos bd_prueba
-        $this->con = new mysqli('localhost', 'root', '', 'bd_prueba');
+        $this->con = new mysqli('localhost', 'root', '', 'bd_test');
     }
-    //Funcion getUsers
+    //Funcion getProductos
     public function getProductos(){
         //Guardo la consulta en una variable
         $query = $this->con->query('SELECT * FROM productos');
@@ -25,13 +25,12 @@ class Conexion{
     //Esta funcion se utiliza para insertar productos a la base de datos
     public function insertar($nombre_producto, $descripcion, $nombre, $imagen){
         $sql = $this->con->query("INSERT INTO productos (nombre_producto, descripcion, precio, imagen) VALUES ('$nombre_producto', '$descripcion', '$nombre', '$imagen')");
-        echo  "<h1>Guardado</h1>";
+        echo  "<script>alert('Producto Guardado');</script>";
        
     }
     public function agregarCarrito($id_producto){
         $idSesion = session_id();
         $sql = $this->con->query("INSERT INTO carrito_usuarios(id_sesion, id_producto) VALUES ('$idSesion' ,'$id_producto')");
-        echo "ESPEREMOS QUE SE HAYA GUARDADO";
     }
     public function verCarrito(){
         $sql = $this->con->query("SELECT * FROM productos INNER JOIN carrito_usuarios ON productos.id_producto = carrito_usuarios.id_producto");
@@ -44,8 +43,11 @@ class Conexion{
         return $retorno;
     }
     public function borrarProductoCarrito($id_producto){
-        $sql = $this->con->query("DELETE FROM carrito_usuarios WHERE id_producto = '$id_producto'");
-        echo "Producto supuestamente borrado";
+        $sql = $this->con->query("DELETE FROM carrito_usuarios WHERE id_sesion = '$id_producto'");
+       // echo "Producto supuestamente borrado";
+    }
+    public function borrarTodoCarrito(){
+        $sql = $this->con->query("DELETE FROM carrito_usuarios");
     }
 }
 

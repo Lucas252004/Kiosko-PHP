@@ -39,7 +39,7 @@ if(isset($_FILES['foto'])){
 if(isset($_POST['boton'])){
     $id_producto = [];
     $id_producto = $_POST['id_producto'];
-    echo "AÑADISTE AL CARRITO EL PRODUCTO". $id_producto;
+    echo "<script>alert('Has añadido el producto al carrito');</script>";
     $con->agregarCarrito($id_producto);
 }
 //-----------------VER PRODUCTOS QUE ESTAN EN EL CARRITO----------
@@ -49,6 +49,11 @@ if(isset($_POST['boton_borrar'])){
     $id_producto = [];
     $id_producto = $_POST['id_producto'];
     $con->borrarProductoCarrito($id_producto);
-    echo "Producto Borrado";
+    echo "<script>alert('Producto Borrado');</script>";
+}
+//-----------------BORRAR TODOS LOS PRODUCTOS DEL CARRITO AL REALIZAR LA COMPRA--------------
+if(isset($_POST['comprar'])){
+    $con->borrarTodoCarrito();
+    echo "<script>alert('Compra Realizada con Exito !');</script>";
 }
 ?>

@@ -6,25 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
     <title>Lista de Productos</title>
 </head>
 <body>
     <!--MENU PRINCIPAL-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <ul class="nav justify-content-end">
+        <a class="navbar-brand" href="#">The Editable Web</a>
+        <ul class="nav justify-content-end ">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="index.php" style="color: white">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="verCarrito.php">Ver Carrito</a>
+                <a class="nav-link" href="verCarrito.php" style="color: white">Ver Carrito</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Iniciar Sesion</a>
+                <a class="nav-link" href="#" style="color: white">Iniciar Sesion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Views/insertar_productos.php">Añadir Productos</a>
+                <a class="nav-link" href="Views/insertar_productos.php" style="color: white">Añadir Productos</a>
             </li>
         </ul>
     </div>
@@ -40,7 +41,7 @@
                     echo "<div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >";
                     //Imprimo los valores por pantalla
                     echo "<div class='card-body'>";
-                    echo "<img src='".$producto['imagen']."' class='card-img-top' alt='foto'><br>";
+                    echo "<img src='".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>";
                     echo "<input type='hidden' name='id_producto' placeholder='Descripcion' value='".$producto['id_producto'] ."'>";
                     echo "<h5 class='card-title'>". $producto['nombre_producto'] ."</h5>";
                     echo "<p class='card-text'>". $producto['descripcion'] ."</p>";
@@ -52,7 +53,8 @@
                    
                 }
             ?>
-        </div>   
+        </div>  
+        
 </body>
 
 </html>

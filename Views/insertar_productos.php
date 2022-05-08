@@ -10,38 +10,41 @@
 </head>
 <body>
     <!--MENU PRINCIPAL-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">The Editable Web</a>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../index.php">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="../index.php" style="color: white">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../verCarrito.php">Ver Carrito</a>
+                <a class="nav-link" href="../verCarrito.php" style="color: white">Ver Carrito</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Iniciar Sesion</a>
+                <a class="nav-link" href="#" style="color: white" >Iniciar Sesion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Views/insertar_productos.php">Añadir Productos</a>
+                <a class="nav-link" href="Views/insertar_productos.php" style="color: white">Añadir Productos</a>
             </li>
         </ul>
     </div>
     </nav>
     <!--Formulario para añadir productos-->
-    <div align="center" style="background-color: #DEDEDE; ">
+    <div align="center">
+    <div align="center" style="background-color: #DEDEDE;" class="col-6">
         <form action="../index.php" method="POST" enctype="multipart/form-data" style="padding: 10px; margin: 10px;">
             <input type="text" name="nombre" placeholder="Nombre del Producto"style="padding: 10px; margin: 10px;"><br>
             <input type="text" name="descripcion" placeholder="Descripcion"style="padding: 10px; margin: 10px;"><br>
             <input type="text" name="precio" placeholder="Precio"style="padding: 10px; margin: 10px;">
-            <div class="mb-3 col-2">
+            <div class="mb-3 col-6">
                 <label for="formFileMultiple" class="form-label">Imagen del Producto</label>
                 <input class="form-control" type="file" name ="foto" id="formFileMultiple" multiple>
             </div>
             <input type="submit" value="Añadir producto" >
         </form>
     </div>
+    </div>
+
 
 </body>
 </html>
