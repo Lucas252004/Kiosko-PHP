@@ -42,7 +42,7 @@ require("Controller/Controller.php");
                 echo "<div class='card-body'>";
                 echo "<img src='".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>";
                 echo "<input type='hidden' name='id_producto' placeholder='Descripcion' value='".$producto['id_producto'] ."'>";
-                echo "<input type='hidden' name='id_producto' placeholder='Descripcion' value='".$producto['id_sesion'] ."'>";
+                echo "<input type='hidden' name='id_sesion' placeholder='Descripcion' value='".$producto['id_sesion'] ."'>";
                 echo "<h5 class='card-title'>". $producto['nombre_producto'] ."</h5>";
                 echo "<p class='card-text'>". $producto['descripcion'] ."</p>";
                 echo "<p class='card-text'> $". $producto['precio'] ."</p>";

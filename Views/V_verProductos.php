@@ -36,20 +36,39 @@
             <?php
                 //Recorro el array con los valores de la base de datos  
                 foreach($productos as $producto){
-                    
-                    echo "<form action='index.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>";
-                    echo "<div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >";
-                    //Imprimo los valores por pantalla
-                    echo "<div class='card-body'>";
-                    echo "<img src='".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>";
-                    echo "<input type='hidden' name='id_producto' placeholder='Descripcion' value='".$producto['id_producto'] ."'>";
-                    echo "<h5 class='card-title'>". $producto['nombre_producto'] ."</h5>";
-                    echo "<p class='card-text'>". $producto['descripcion'] ."</p>";
-                    echo "<p class='card-text'> $". $producto['precio'] ."</p>";
-                    echo "<input type='submit' name ='boton' value='Añadir producto' >";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</form>";
+                    if($producto['cantidad'] <= 0){
+                        echo "<form action='index.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>";
+                        echo "<div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >";
+                        //Imprimo los valores por pantalla
+                        echo "<div class='card-body'>";
+                        echo "<img src='".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>";
+                        echo "<input type='hidden' name='id_producto' placeholder='Descripcion' value='".$producto['id_producto'] ."'>";
+                        echo "<h5 class='card-title'>". $producto['nombre_producto'] ."</h5>";
+                        echo "<p class='card-text'>". $producto['descripcion'] ."</p>";
+                        echo "<p class='card-text'> $". $producto['precio'] ."</p>";
+                        echo "<p class='card-text'> Cantidad ". $producto['cantidad'] ."</p>";
+                        echo "<input type='hidden' name ='boton' value='Añadir producto' >";
+                        echo "<p class='card-text'>Producto Agotado</p>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</form>";
+                    }else{
+                        echo "<form action='index.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>";
+                        echo "<div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >";
+                        //Imprimo los valores por pantalla
+                        echo "<div class='card-body'>";
+                        echo "<img src='".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>";
+                        echo "<input type='hidden' name='id_producto' placeholder='Descripcion' value='".$producto['id_producto'] ."'>";
+                        echo "<h5 class='card-title'>". $producto['nombre_producto'] ."</h5>";
+                        echo "<p class='card-text'>". $producto['descripcion'] ."</p>";
+                        echo "<p class='card-text'> $". $producto['precio'] ."</p>";
+                        echo "<p class='card-text'> Cantidad ". $producto['cantidad'] ."</p>";
+                        echo "<input type='submit' name ='boton' value='Añadir producto' >";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</form>";
+                    }
+
                    
                 }
             ?>

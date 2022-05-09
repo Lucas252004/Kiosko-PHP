@@ -23,14 +23,13 @@ class Conexion{
         return $retorno;
     }
     //Esta funcion se utiliza para insertar productos a la base de datos
-    public function insertar($nombre_producto, $descripcion, $nombre, $imagen){
-        $sql = $this->con->query("INSERT INTO productos (nombre_producto, descripcion, precio, imagen) VALUES ('$nombre_producto', '$descripcion', '$nombre', '$imagen')");
+    public function insertar($nombre_producto, $descripcion, $nombre, $imagen, $cantidad){
+        $sql = $this->con->query("INSERT INTO productos (nombre_producto, descripcion, precio, imagen, cantidad) VALUES ('$nombre_producto', '$descripcion', '$nombre', '$imagen', '$cantidad')");
         echo  "<script>alert('Producto Guardado');</script>";
        
     }
     public function agregarCarrito($id_producto){
-        $idSesion = session_id();
-        $sql = $this->con->query("INSERT INTO carrito_usuarios(id_sesion, id_producto) VALUES ('$idSesion' ,'$id_producto')");
+        $sql = $this->con->query("INSERT INTO carrito_usuarios(id_producto) VALUES ('$id_producto')");
     }
     public function verCarrito(){
         $sql = $this->con->query("SELECT * FROM productos INNER JOIN carrito_usuarios ON productos.id_producto = carrito_usuarios.id_producto");
@@ -49,6 +48,13 @@ class Conexion{
     public function borrarTodoCarrito(){
         $sql = $this->con->query("DELETE FROM carrito_usuarios");
     }
+    public function restarStock($id_producto){
+        $sql = $this->con->query("UPDATE productos SET cantidad = cantidad - 1 WHERE id_producto = '$id_producto'");
+    }
+    public function sumarStock($id_producto){
+        $sql = $this->con->query("UPDATE productos SET cantidad = cantidad + 1 WHERE id_producto = '$id_producto'");
+    }
+
 }
 
 ?>

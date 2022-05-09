@@ -36,6 +36,7 @@
             <input type="text" name="nombre" placeholder="Nombre del Producto"style="padding: 10px; margin: 10px;"><br>
             <input type="text" name="descripcion" placeholder="Descripcion"style="padding: 10px; margin: 10px;"><br>
             <input type="text" name="precio" placeholder="Precio"style="padding: 10px; margin: 10px;">
+            <input type="text" name="cantidad" placeholder="Cantidad"style="padding: 10px; margin: 10px;">
             <div class="mb-3 col-6">
                 <label for="formFileMultiple" class="form-label">Imagen del Producto</label>
                 <input class="form-control" type="file" name ="foto" id="formFileMultiple" multiple>

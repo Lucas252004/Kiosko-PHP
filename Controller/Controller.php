@@ -13,6 +13,7 @@ if(isset($_FILES['foto'])){
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
     $nombre_producto = $_POST['nombre'];
+    $cantidad = $_POST['cantidad'];
     //Guardar imagen
     $file = $_FILES['foto'];
     $carpeta = "img/";
@@ -32,27 +33,40 @@ if(isset($_FILES['foto'])){
     }
     //Instruccion SQL
     //Llamo a la funcion insertar
-    $con->insertar($nombre_producto, $descripcion, $precio, $imagen);
+    $con->insertar($nombre_producto, $descripcion, $precio, $imagen, $cantidad);
     
 }
 //-----------------AÑADIR AL CARRITO---------------------
 if(isset($_POST['boton'])){
     $id_producto = [];
     $id_producto = $_POST['id_producto'];
+    echo "<script>alert('". $id_producto ."');</script>";
     echo "<script>alert('Has añadido el producto al carrito');</script>";
     $con->agregarCarrito($id_producto);
+    $con->restarStock($id_producto);
 }
 //-----------------VER PRODUCTOS QUE ESTAN EN EL CARRITO----------
 $producto_carrito = $con->verCarrito();
 //-----------------BORRAR PRODUCTOS DEL CARRITO-------------------
 if(isset($_POST['boton_borrar'])){
-    $id_producto = [];
+    $id_producto = 0;
     $id_producto = $_POST['id_producto'];
+    echo "<script>alert('". $id_producto ."');</script>";
+    $con->sumarStock($id_producto);
     $con->borrarProductoCarrito($id_producto);
     echo "<script>alert('Producto Borrado');</script>";
 }
 //-----------------BORRAR TODOS LOS PRODUCTOS DEL CARRITO AL REALIZAR LA COMPRA--------------
 if(isset($_POST['comprar'])){
+    //CODIGO MOMENTANEAMENTE COMENTADO
+    /*$producto_carrito = $con->verCarrito();
+    $cantidad = 0;
+    $id_producto = 0;
+    foreach($producto_carrito as $producto){
+        $cantidad = $producto['cantidad'];     
+        $id_producto = $producto['id_producto'];
+        $con->actualizarStock($id_producto);    
+    }*/
     $con->borrarTodoCarrito();
     echo "<script>alert('Compra Realizada con Exito !');</script>";
 }
