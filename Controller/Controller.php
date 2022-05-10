@@ -40,7 +40,6 @@ if(isset($_FILES['foto'])){
 if(isset($_POST['boton'])){
     $id_producto = [];
     $id_producto = $_POST['id_producto'];
-    echo "<script>alert('". $id_producto ."');</script>";
     echo "<script>alert('Has añadido el producto al carrito');</script>";
     $con->agregarCarrito($id_producto);
     $con->restarStock($id_producto);
@@ -51,7 +50,6 @@ $producto_carrito = $con->verCarrito();
 if(isset($_POST['boton_borrar'])){
     $id_producto = 0;
     $id_producto = $_POST['id_producto'];
-    echo "<script>alert('". $id_producto ."');</script>";
     $con->sumarStock($id_producto);
     $con->borrarProductoCarrito($id_producto);
     echo "<script>alert('Producto Borrado');</script>";
