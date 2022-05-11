@@ -1,4 +1,6 @@
-
+<?php
+require("../Controller/C_insertar_producto.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +34,7 @@
     <!--Formulario para añadir productos-->
     <div align="center">
     <div align="center" style="background-color: #DEDEDE;" class="col-6">
-        <form action="../index.php" method="POST" enctype="multipart/form-data" style="padding: 10px; margin: 10px;">
+        <form action="insertar_productos.php" method="POST" enctype="multipart/form-data" style="padding: 10px; margin: 10px;">
             <input type="text" name="nombre" placeholder="Nombre del Producto"style="padding: 10px; margin: 10px;"><br>
             <input type="text" name="descripcion" placeholder="Descripcion"style="padding: 10px; margin: 10px;"><br>
             <input type="text" name="precio" placeholder="Precio"style="padding: 10px; margin: 10px;">
@@ -41,7 +43,7 @@
                 <label for="formFileMultiple" class="form-label">Imagen del Producto</label>
                 <input class="form-control" type="file" name ="foto" id="formFileMultiple" multiple>
             </div>
-            <input type="submit" value="Añadir producto" >
+            <input type="submit" value="Añadir producto" name="insertar">
         </form>
     </div>
     </div>

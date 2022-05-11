@@ -1,5 +1,6 @@
 <?php
-require("Controller/Controller.php");
+//require("Controller/C_insertar_producto.php");
+require("Controller/C_carrito.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@ require("Controller/Controller.php");
             $precio = 0;
             //Recorro el array con los valores de la base de datos  
             foreach($producto_carrito as $producto){
-                echo "<form action='index.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>";
+                echo "<form action='verCarrito.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>";
                 echo "<div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >";
                 //Imprimo los valores por pantalla
                 echo "<div class='card-body'>";
@@ -68,7 +69,7 @@ require("Controller/Controller.php");
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="index.php" method="post">
+                    <form action="verCarrito.php" method="post">
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Numero de Tarjeta:</label>
                         <input type="number" class="form-control" id="recipient-name" required>

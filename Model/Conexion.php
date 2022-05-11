@@ -41,8 +41,8 @@ class Conexion{
         }
         return $retorno;
     }
-    public function borrarProductoCarrito($id_producto){
-        $sql = $this->con->query("DELETE FROM carrito_usuarios WHERE id_sesion = '$id_producto'");
+    public function borrarProductoCarrito($id_sesion){
+        $sql = $this->con->query("DELETE FROM carrito_usuarios WHERE id_sesion = '$id_sesion'");
        // echo "Producto supuestamente borrado";
     }
     public function borrarTodoCarrito(){
