@@ -54,7 +54,9 @@ class Conexion{
     public function sumarStock($id_producto){
         $sql = $this->con->query("UPDATE productos SET cantidad = cantidad + 1 WHERE id_producto = '$id_producto'");
     }
-
+    public function insertarUsuarios($id_usuario, $email, $nombre_usuario){
+        $sql = $this->con->query("INSERT IGNORE usuarios SET id_usuario = '$id_usuario', email = '$email', nombre_usuario = '$nombre_usuario'");
+    }
 }
 
 ?>
