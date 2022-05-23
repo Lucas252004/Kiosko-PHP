@@ -46,18 +46,15 @@
         e.preventDefault()
         let email2 = document.getElementById('email2').value;
         let password2 = document.getElementById('password2').value;
-        alert("ANTES")
         signInWithEmailAndPassword(auth, email2, password2)
             .then((userCredential) => {
                 // Signed in
-                alert('FUNCA ANTES')
                 const user = userCredential.user
-                alert('FUNCA DESPUES')
                 const dt = new Date()
                 update(ref(database, 'users/' + user.uid),{
                     last_login: dt,
                 })
-                alert('FUNCAAAAAAAAA')
+                alert('Has iniciado sesion con exito !')
                 console.log(user)
               //  window.location.replace("http://localhost/proyecto_php")
                 // ...
@@ -67,4 +64,35 @@
                 const errorMessage = error.message;
                 alert(errorMessage)
             })
+    })
+    const google = document.getElementById('google')
+    google.addEventListener('click', (e) =>{
+        console.log("CLICK")
+        e.preventDefault()
+        alert("GOOGLE")
+        signInWithPopup(auth, provider)
+        //getRedirectResult(auth)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access Google APIs.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+
+                // The signed-in user info.
+                const user = result.user;
+                console.log(user)
+                console.log(result.user.providerData[0].displayName)
+                console.log(result.user.providerData[0].email)
+                console.log(result.user.providerData[0].photoURL)
+               // $.post("solicitarDatos.php?op=accesosocial",{usu_correo:result.user.providerData[0].email})
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            })
+        
     })

@@ -13,18 +13,9 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">The Editable Web</a>
         <ul class="nav justify-content-end ">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../index.php" style="color: white">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="verCarrito.php" style="color: white">Ver Carrito</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" style="color: white">Iniciar Sesion</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Views/insertar_productos.php" style="color: white">Añadir Productos</a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../index.php" style="color: white">Inicio</a>
+        </li>
         </ul>
     </div>
     </nav>
@@ -51,7 +42,9 @@
             <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39; "
                id="google">Continuar con Google</button>
             <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998; margin-top:10px;"
-              type="submit">Continuar con Facebook</button>
+              type="submit">Continuar con Facebook</button><br>
+            <a href="registro.php">Si no tienes cuenta. Registrate aca</a>
+
           </div>
         </div>
       </div>

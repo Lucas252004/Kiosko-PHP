@@ -48,7 +48,7 @@ require("../Controller/C_insertar_producto.php");
     </div>
     </div>
 
-
+    <script src="../usuario_activo.js" type="module"></script>
 </body>
 </html>
 

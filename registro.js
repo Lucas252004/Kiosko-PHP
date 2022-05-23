@@ -71,6 +71,7 @@
     const google = document.getElementById('google')
     google.addEventListener('click', (e) =>{
         e.preventDefault()
+        console.log("CLICK")
         alert("GOOGLE")
         signInWithPopup(auth, provider)
         //getRedirectResult(auth)

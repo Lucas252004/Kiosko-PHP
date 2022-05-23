@@ -89,7 +89,11 @@
         const uid = user.uid;
         console.log("UID " + uid)
         //console.log(user)
-        
+        let boolean = false;
+        if(boolean == false){
+            window.location.href = "http://localhost/proyecto_php/Controller/C_recibir.php" + "?w1" + uid;
+            boolean = true
+        }
         // ...
     } else {
         // User is signed out
