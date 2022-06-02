@@ -1,7 +1,13 @@
 <?php
 require('Model/Conexion.php');
 $con = new Conexion();
-$producto_carrito = $con->verCarrito();
+//----------------MOSTRAR LOS PRODUCTOS DEL CARRITO---------------
+$usuario = $con->getUsuarioActual();
+$usuario_actual = "";
+foreach($usuario as $i){
+    $usuario_actual = $i['id_usuario'];
+}
+$producto_carrito = $con->verCarrito($usuario_actual);
 //-----------------BORRAR PRODUCTOS DEL CARRITO-------------------
 if(isset($_POST['boton_borrar'])){
     $id_producto = 0;

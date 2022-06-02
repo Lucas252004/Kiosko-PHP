@@ -32,7 +32,10 @@
     </nav>
         
         <div align="center" style="padding: 20px;">
-        
+        <form action="" id="seccion_id">
+            <input type="hidden" id='id_usuario' style='color:red;'>
+            <!-- <input type="submit" id="enviar" value="enviar"> -->
+        </form>
         
         <h3 id="titulo"></h3> 
             <?php

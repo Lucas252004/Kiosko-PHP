@@ -1,9 +1,7 @@
 <?php
-//require('Controller/Controller.php'); //Llamo al controllador Controller.php
-require('Controller/C_ver_productos.php'); //Llamo al controllador
+//Llamo al los controladores
+require('Controller/C_ver_productos.php'); 
 require('Controller/C_insertar_usuarios.php');
-require('Controller/C_recibir.php');
-//require('Controller/C_insertar_producto.php'); //Llamo al controllador
-//require('Controller/C_carrito.php'); //Llamo al controllador
+//Llamo a la vista de ver productos
 require('Views/V_verProductos.php');
 ?>

@@ -2,27 +2,21 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
     import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
     import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider,  signInWithRedirect, getRedirectResult, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
-
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyDLBElztDZrLNtNOtd_3pWFcV5H6MEI6DM",
-      authDomain: "pruebafirebase-2cb7a.firebaseapp.com",
-      databaseURL: "https://pruebafirebase-2cb7a-default-rtdb.firebaseio.com",
-      projectId: "pruebafirebase-2cb7a",
-      storageBucket: "pruebafirebase-2cb7a.appspot.com",
-      messagingSenderId: "249150742609",
-      appId: "1:249150742609:web:81a2242f7cd36edc731870"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-
+        apiKey: "AIzaSyDLBElztDZrLNtNOtd_3pWFcV5H6MEI6DM",
+        authDomain: "pruebafirebase-2cb7a.firebaseapp.com",
+        databaseURL: "https://pruebafirebase-2cb7a-default-rtdb.firebaseio.com",
+        projectId: "pruebafirebase-2cb7a",
+        storageBucket: "pruebafirebase-2cb7a.appspot.com",
+        messagingSenderId: "249150742609",
+        appId: "1:249150742609:web:81a2242f7cd36edc731870"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
     const boton = document.getElementById('saveData')
     //Registrarse
     boton.addEventListener('click', (e) =>{
@@ -40,7 +34,7 @@
                     username: username,
                     email: email
                 })
-             //   window.location.replace("http://localhost/proyecto_php")
+        
                 // ...
             })
             .catch((error) => {
