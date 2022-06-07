@@ -18,7 +18,7 @@
                 <a class='nav-link active' aria-current='page' href='http://localhost/proyecto_php/' style='color: white'>Inicio</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../verCarrito.php' style='color: white'>Ver Carrito</a>
+                <a class='nav-link' href='http://localhost/proyecto_php/Controller/C_carrito.php' style='color: white'>Ver Carrito</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='#' style='color: white' >Iniciar Sesion</a>
@@ -67,22 +67,28 @@
         <tbody>
         <tr>
             <th scope='row'><input type='text' hidden name='id_producto' value='" . $producto['id_producto'] . "'></th>
-            <td> " . $producto['nombre_producto'] . "</td>
+            <td name='nombre_producto'> " . $producto['nombre_producto'] . "</td>
             <td>" . $producto['descripcion'] . "</td>
             <td>" . $producto['precio'] . "</td>
             <td>" . $producto['cantidad'] . "</td>
             <td><img src='../".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:50px; width:50px; border-radius: 10px;'></td>
-            <td><input type='submit' class='btn btn-primary' value='Editar'></td>
+            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' data-bs-whatever='@mdo'>Editar</button></td>
             <td><input type='submit' class='btn btn-danger' name='borrar_producto' value='Borrar'></td>
         </tr>
+
         </tbody>";
+
+        echo "</form>";
+
         }
         echo "</table>";
-        echo "</form>";
+        
     ?>
-    
+ 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src='../usuario_activo.js' type='module'></script>
 </body>
 </html>

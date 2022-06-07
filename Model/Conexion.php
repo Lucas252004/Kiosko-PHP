@@ -45,6 +45,9 @@ class Conexion{
         $sql = $this->con->query("DELETE FROM carrito_usuarios WHERE id_carrito = '$id_carrito'");
        // echo "Producto supuestamente borrado";
     }
+    public function borrarProductoCatalogo($id_producto){
+        $sql = $this->con->query("DELETE FROM productos WHERE id_producto = '$id_producto'");
+    }
     public function borrarTodoCarrito($usuario){
         $sql = $this->con->query("DELETE FROM carrito_usuarios WHERE id_sesion = '$usuario'");
     }

@@ -31,8 +31,17 @@ if(isset($_FILES['foto'])){
     //Llamo a la funcion insertar
     $con->insertar($nombre_producto, $descripcion, $precio, $imagen, $cantidad);
 }
+//Borrar Producto del catalogo
 if(isset($_POST['borrar_producto'])){
-    print_r($_POST);
+    print_r($_POST['id_producto']);
+    $id_producto =  $_POST['id_producto'];
+    $con->borrarProductoCatalogo($id_producto);
+    print_r("Producto Borrado");
+    
+}
+//Editar Producto del catalogo
+if(isset($_POST['editar_producto'])){
+    print_r($_POST['id_producto']);
 }
 require_once('../Views/insertar_productos.php');
 ?>
