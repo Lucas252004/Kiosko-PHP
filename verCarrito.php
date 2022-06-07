@@ -1,6 +1,4 @@
-<?php
-require("Controller/C_carrito.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +15,10 @@ require("Controller/C_carrito.php");
         <a class="navbar-brand" href="#">The Editable Web</a>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php" style="color: white">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="http://localhost/proyecto_php/" style="color: white">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="verCarrito.php" style="color: white">Ver Carrito</a>
+                <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_carrito.php" style="color: white">Ver Carrito</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" style="color: white">Iniciar Sesion</a>
@@ -40,7 +38,7 @@ require("Controller/C_carrito.php");
                 echo "<div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >";
                 //Imprimo los valores por pantalla
                 echo "<div class='card-body'>";
-                echo "<img src='".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>";
+                echo "<img src='../".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>";
                 echo "<input type='hidden' name='id_producto' placeholder='Descripcion' value='".$producto['id_producto'] ."'>";
                 echo "<input type='hidden' name='id_sesion' placeholder='Descripcion' value='".$producto['id_carrito'] ."'>";
                 echo "<h5 class='card-title'>". $producto['nombre_producto'] ."</h5>";
@@ -68,7 +66,7 @@ require("Controller/C_carrito.php");
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="verCarrito.php" method="post">
+                    <form action="http://localhost/proyecto_php/Controller/C_carrito.php" method="post">
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Numero de Tarjeta:</label>
                         <input type="number" class="form-control" id="recipient-name" required>

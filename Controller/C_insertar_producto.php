@@ -1,7 +1,8 @@
 <?php
 //Llamo al archivo Conexion.php
-require('../Model/Conexion.php');
+require_once('../Model/Conexion.php');
 $con = new Conexion();
+$productos = $con->getProductos();
  //Si existe un archivo con el nombre fotos...
 if(isset($_FILES['foto'])){
      //Variables nombre, precio y descripcion
@@ -30,4 +31,8 @@ if(isset($_FILES['foto'])){
     //Llamo a la funcion insertar
     $con->insertar($nombre_producto, $descripcion, $precio, $imagen, $cantidad);
 }
+if(isset($_POST['borrar_producto'])){
+    print_r($_POST);
+}
+require_once('../Views/insertar_productos.php');
 ?>

@@ -19,13 +19,13 @@
                 <a class="nav-link active" aria-current="page" href="index.php" style="color: white">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="verCarrito.php" style="color: white">Ver Carrito</a>
+                <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_carrito.php" style="color: white">Ver Carrito</a>
             </li>
             <li class="nav-item" style="cursor: pointer;">
                 <a class="nav-link" style="color: white" id="logout" >Cerrar Sesion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Views/insertar_productos.php" style="color: white">Añadir Productos</a>
+                <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_insertar_producto.php" style="color: white">Añadir Productos</a>
             </li>
         </ul>
     </div>

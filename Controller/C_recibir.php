@@ -1,5 +1,5 @@
 <?php
-require("../Model/Conexion.php");
+require_once("../Model/Conexion.php");
 $con = new Conexion();
 $js =  json_encode($_POST['id_usuario']);
 print_r($js);

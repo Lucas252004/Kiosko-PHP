@@ -1,5 +1,5 @@
 <?php
-require('Model/Conexion.php');
+require_once('../Model/Conexion.php');
 $con = new Conexion();
 //----------------MOSTRAR LOS PRODUCTOS DEL CARRITO---------------
 $usuario = $con->getUsuarioActual();
@@ -19,7 +19,8 @@ if(isset($_POST['boton_borrar'])){
 }
 //-----------------BORRAR TODOS LOS PRODUCTOS DEL CARRITO AL REALIZAR LA COMPRA--------------
 if(isset($_POST['comprar'])){
-    $con->borrarTodoCarrito();
+    $con->borrarTodoCarrito($usuario_actual);
     echo "<script>alert('Compra Realizada con Exito !');</script>";
 }
+require_once('../verCarrito.php');
 ?>

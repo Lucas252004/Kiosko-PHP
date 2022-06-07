@@ -1,7 +1,4 @@
-<?php
-require('../Controller/C_insertar_producto.php');
-$productos = $con->getProductos();
-?>
+
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -18,7 +15,7 @@ $productos = $con->getProductos();
         <a class='navbar-brand' href='#'>The Editable Web</a>
         <ul class='nav justify-content-end'>
             <li class='nav-item'>
-                <a class='nav-link active' aria-current='page' href='../index.php' style='color: white'>Inicio</a>
+                <a class='nav-link active' aria-current='page' href='http://localhost/proyecto_php/' style='color: white'>Inicio</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../verCarrito.php' style='color: white'>Ver Carrito</a>
@@ -27,7 +24,7 @@ $productos = $con->getProductos();
                 <a class='nav-link' href='#' style='color: white' >Iniciar Sesion</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='Views/insertar_productos.php' style='color: white'>Añadir Productos</a>
+                <a class='nav-link' href='http://localhost/proyecto_php/Controller/C_insertar_producto.php' style='color: white'>Añadir Productos</a>
             </li>
         </ul>
     </div>
@@ -35,7 +32,7 @@ $productos = $con->getProductos();
     <!--Formulario para añadir productos-->
     <div align='center'>
     <div align='center' style='background-color: #DEDEDE;' class='col-6'>
-        <form action='insertar_productos.php' method='POST' enctype='multipart/form-data' style='padding: 10px; margin: 10px;'>
+        <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST' enctype='multipart/form-data' style='padding: 10px; margin: 10px;'>
             <input type='text' name='nombre' placeholder='Nombre del Producto'style='padding: 10px; margin: 10px;'><br>
             <input type='text' name='descripcion' placeholder='Descripcion'style='padding: 10px; margin: 10px;'><br>
             <input type='text' name='precio' placeholder='Precio'style='padding: 10px; margin: 10px;'>
@@ -66,17 +63,17 @@ $productos = $con->getProductos();
         //Recorro el array con los valores de la base de datos  
         foreach($productos as $producto){
         echo " 
-        <form action='../Controller/C_borrar_producto.php' method='POST'> 
+        <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST'> 
         <tbody>
         <tr>
-            <th scope='row' name='id_producto'> " . $producto['id_producto'] . "</th>
+            <th scope='row'><input type='text' hidden name='id_producto' value='" . $producto['id_producto'] . "'></th>
             <td> " . $producto['nombre_producto'] . "</td>
             <td>" . $producto['descripcion'] . "</td>
             <td>" . $producto['precio'] . "</td>
             <td>" . $producto['cantidad'] . "</td>
-            <td><img src='../".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:50px; width:50px; border-radius: 10px;'></td>'
-            <td><button type='submit' class='btn btn-primary'>Editar</button></td>
-            <td><button type='submit' class='btn btn-danger'>Borrar</button></td>
+            <td><img src='../".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:50px; width:50px; border-radius: 10px;'></td>
+            <td><input type='submit' class='btn btn-primary' value='Editar'></td>
+            <td><input type='submit' class='btn btn-danger' name='borrar_producto' value='Borrar'></td>
         </tr>
         </tbody>";
         }

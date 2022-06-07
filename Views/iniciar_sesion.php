@@ -14,7 +14,7 @@
         <a class="navbar-brand" href="#">The Editable Web</a>
         <ul class="nav justify-content-end ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../index.php" style="color: white">Inicio</a>
+          <a class="nav-link active" aria-current="page" href="http://localhost/proyecto_php/" style="color: white">Inicio</a>
         </li>
         </ul>
     </div>

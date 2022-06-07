@@ -1,6 +1,6 @@
 <?php
 //Creo una clase Conexion
-require('Model/Conexion.php');
+require_once('Model/Conexion.php');
 
 $con = new Conexion();
 //Llamo a la funcion getProductos() y almaceno el valor en una variable
@@ -20,4 +20,5 @@ if(isset($_POST['boton'])){
     $con->restarStock($id_producto);
 
 }
+require_once('Views/V_verProductos.php');
 ?>
