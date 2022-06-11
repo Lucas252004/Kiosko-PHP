@@ -8,9 +8,22 @@
     <title>Insertar Productos</title>
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'>
 </head>
-<body>
+<?php
+$prueba = "white";
+foreach($color_actual as $color){
+    $prueba = $color['codigo_color'];
+}
+echo "<body style='background-color:". $prueba . ";'>";
+?>
     <!--MENU PRINCIPAL-->
-    <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+    <?php
+    $test = "dark";
+    foreach($color_actual_menu as $color_menu){
+        $test = $color_menu['codigo_color'];
+    }
+    
+    echo "<nav class='navbar navbar-expand-lg navbar-dark bg-". $test ."' >";
+    ?>
     <div class='container-fluid'>
         <a class='navbar-brand' href='#'>The Editable Web</a>
         <ul class='nav justify-content-end'>
@@ -31,6 +44,7 @@
     </nav>
     <!--Formulario para añadir productos-->
     <div align='center'>
+    <h2>Agregar Producto</h2>
     <div align='center' style='background-color: #DEDEDE;' class='col-6'>
         <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST' enctype='multipart/form-data' style='padding: 10px; margin: 10px;'>
             <input type='text' name='nombre' placeholder='Nombre del Producto'style='padding: 10px; margin: 10px;'><br>
@@ -45,7 +59,7 @@
         </form>
     </div>
     </div>
-
+    <div>
     <?php
         echo "<table class='table table-dark table-striped'>
         <thead>
@@ -86,8 +100,39 @@
  
         
     ?>
-
-
+    </div>
+    <div align="center">
+    <h2>Edicion de Diseño</h2>
+    <h3>Cambiar color de Fondo</h3>
+    <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
+        <span>Selecciona un color de la lista: </span>
+        <select id=”colorlista” name="colorlista">
+        <option value="White" >Blanco</option>
+        <option value="LimeGreen" >Lima</option>
+        <option value="YellowGreen">Amarillo verdoso</option>
+        <option value="Crimson" >Carmesí</option>
+        <option value="SteelBlue" >Azul Acero</option>
+        <option value="#9D649B" >Violeta</option>
+        </select>
+        <!-- <span>ó Escribe el nombre en inglés de un color:</span>
+        <input type="text" name="nombrecolor" /><br/> -->
+        <input name="cambiar_color" type="submit" value="Cambiar el fondo!" />
+    </form>
+    <h3>Cambiar color de la barra de navegacion</h3>
+    <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
+        <span>Selecciona un color de la lista: </span>
+        <select id=”colorlista_menu” name="colorlista_menu">
+        <option value="secondary" >Gris</option>
+        <option value="success">Verde</option>
+        <option value="info" >Celeste</option>
+        <option value="danger" >Rojo</option>
+        <option value="dark" >Negro</option>
+        </select>
+        <!-- <span>ó Escribe el nombre en inglés de un color:</span>
+        <input type="text" name="nombrecolor" /><br/> -->
+        <input name="cambiar_color_menu" type="submit" value="Cambiar el menu!" />
+    </form>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

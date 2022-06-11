@@ -75,5 +75,24 @@ if(isset($_POST['editar_producto'])){
         }
     }
 }
+//Diseño de colores de la Pagina
+if(isset($_POST['cambiar_color'])){
+    //echo "OK";
+    $color = $_POST['colorlista'];
+    //print_r($color);
+    $con->insertarColores($color);
+    //echo "COLOR OK";
+}
+//Diseño de colores de la Pagina
+if(isset($_POST['cambiar_color_menu'])){
+    //echo "OK";
+    $color = $_POST['colorlista_menu'];
+    //print_r($color);
+    $con->insertarColoresMenu($color);
+    //echo "COLOR OK";
+}
+$color_actual = $con->getColorActual();
+//-----------COLOR ACTUAL DEL MENU------------------
+$color_actual_menu = $con->getColorMenuActual();
 require_once('../Views/insertar_productos.php');
 ?>

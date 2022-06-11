@@ -100,6 +100,39 @@ class Conexion{
         //devuelvo el array con los valores de la base de datos
         return $retorno;
     }
+    //--------COLORES-----------------
+    public function insertarColores($codigo_color){
+        $sql = $this->con->query("REPLACE INTO colores (id_color, codigo_color) VALUES (1, '$codigo_color')");
+    }
+    public function insertarColoresMenu($codigo_color){
+        $sql = $this->con->query("REPLACE INTO colores (id_color, codigo_color) VALUES (2, '$codigo_color')");
+    }
+    public function getColorActual(){
+        //Guardo la consulta en una variable
+        $query = $this->con->query('SELECT * FROM colores WHERE id_color = 1');
+        $i = 0;
+        $retorno = [];
+
+        while($fila = $query->fetch_assoc()){
+            $retorno[$i] = $fila;  //Almaceno los valores de la consulta en array
+            $i++;
+        }
+        //devuelvo el array con los valores de la base de datos
+        return $retorno;   
+    }
+    public function getColorMenuActual(){
+        //Guardo la consulta en una variable
+        $query = $this->con->query('SELECT * FROM colores WHERE id_color = 2');
+        $i = 0;
+        $retorno = [];
+
+        while($fila = $query->fetch_assoc()){
+            $retorno[$i] = $fila;  //Almaceno los valores de la consulta en array
+            $i++;
+        }
+        //devuelvo el array con los valores de la base de datos
+        return $retorno;   
+    }
     }
 
 ?>

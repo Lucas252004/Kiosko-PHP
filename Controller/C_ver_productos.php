@@ -20,5 +20,9 @@ if(isset($_POST['boton'])){
     $con->restarStock($id_producto);
 
 }
+//----------COLOR ACTUAL DE LA PAGINA-----------
+$color_actual = $con->getColorActual();
+//-----------COLOR ACTUAL DEL MENU------------------
+$color_actual_menu = $con->getColorMenuActual();
 require_once('Views/V_verProductos.php');
 ?>

@@ -8,9 +8,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Productos del Carrito</title>
 </head>
-<body>
+<?php
+$prueba = "white";
+foreach($color_actual as $color){
+    $prueba = $color['codigo_color'];
+}
+echo "<body style='background-color:". $prueba . ";'>";
+?>
     <!--MENU PRINCIPAL-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <?php
+    $test = "dark";
+    foreach($color_actual_menu as $color_menu){
+        $test = $color_menu['codigo_color'];
+    }
+    
+    echo "<nav class='navbar navbar-expand-lg navbar-dark bg-". $test ."' >";
+    ?>
     <div class="container-fluid">
         <a class="navbar-brand" href="#">The Editable Web</a>
         <ul class="nav justify-content-end">
@@ -24,7 +37,7 @@
                 <a class="nav-link" href="#" style="color: white">Iniciar Sesion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Views/insertar_productos.php" style="color: white">Añadir Productos</a>
+                <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_insertar_producto.php" style="color: white">Añadir Productos</a>
             </li>
         </ul>
     </div>
