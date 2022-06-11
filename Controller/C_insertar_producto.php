@@ -30,6 +30,7 @@ if(isset($_FILES['foto'])){
     //Instruccion SQL
     //Llamo a la funcion insertar
     $con->insertar($nombre_producto, $descripcion, $precio, $imagen, $cantidad);
+    echo  "<script>alert('Producto Guardado');</script>";
 }
 //Borrar Producto del catalogo
 if(isset($_POST['borrar_producto'])){
@@ -40,8 +41,39 @@ if(isset($_POST['borrar_producto'])){
     
 }
 //Editar Producto del catalogo
+$producto_elegido = [];
 if(isset($_POST['editar_producto'])){
-    print_r($_POST['id_producto']);
+    //Obtengo los valores enviados por POST
+    $id_producto =  $_POST['id_producto'];
+    $nombre_producto =  $_POST['nombre_producto'];
+    $descripcion =  $_POST['descripcion'];
+    $precio =  $_POST['precio'];
+    $cantidad =  $_POST['cantidad'];
+    //Guardar imagen en el caso que el usuario haya deseado cambiar la imagen del producto
+    if(isset($_FILES['foto_editar'])){
+    $file = $_FILES['foto_editar'];
+    $carpeta = "../img/";
+    $ruta_provisional = $file['tmp_name'];
+    $tipo = $file['type'];
+    $size = $file['size'];
+     //Condicional si el archivo no es una imagen
+        if($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif'){
+            echo "El archivo no es una imagen";
+            //En caso que no haya una imagen para cambiar, actualizo el producto sin imagen
+            $con->actualizarProductoSinImagen($id_producto, $nombre_producto, $descripcion, $precio, $cantidad);
+            echo "Producto Actualizado sin Imagen"; 
+        //Condicional si el archivo es superior a 3MB
+        }else if($size > 3*1024*1024){
+            echo "Error, el tamaño maximo es de 3MB";
+        }else{
+            $src = $carpeta.$nombre_producto;
+            move_uploaded_file($ruta_provisional, $src);
+            $imagen='img/'.$nombre_producto;
+            //Actualizo el producto con la imagen
+            $con->actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $imagen);
+            echo "Producto Actualizado";
+        }
+    }
 }
 require_once('../Views/insertar_productos.php');
 ?>
