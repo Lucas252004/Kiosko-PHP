@@ -9,6 +9,14 @@
     
     <title>Lista de Productos</title>
 </head>
+<style>
+    #icono{
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
+</style>
 <?php
 $prueba = "white";
 foreach($color_actual as $color){
@@ -16,17 +24,25 @@ foreach($color_actual as $color){
 }
 echo "<body style='background-color:". $prueba . ";'>";
 ?>
+    
     <!--MENU PRINCIPAL-->
     <?php
     $test = "dark";
     foreach($color_actual_menu as $color_menu){
         $test = $color_menu['codigo_color'];
     }
-    
-    echo "<nav class='navbar navbar-expand-lg navbar-dark bg-". $test ."' >";
+    foreach($icono_actual as $icono){
+        $imagen_icono = $icono['codigo_color'];
+    }
+    echo "<nav class='navbar navbar-expand-lg navbar-dark bg-". $test ."' ><img src='". $imagen_icono ."' alt='' id='icono'>";
     ?>
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">The Editable Web</a>
+        <?php
+        //TITULO DE LA PAGINA GUARDADA EN LA BASE DE DATOS
+        foreach($titulo_actual as $titulo){
+           echo "<a class='navbar-brand' href='#'>". $titulo['codigo_color'] ."</a>";
+        }
+        ?>
         <ul class="nav justify-content-end ">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="index.php" style="color: white">Inicio</a>

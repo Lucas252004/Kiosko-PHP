@@ -26,5 +26,8 @@ if(isset($_POST['comprar'])){
 $color_actual = $con->getColorActual();
 //-----------COLOR ACTUAL DEL MENU------------------
 $color_actual_menu = $con->getColorMenuActual();
+//----------ENCABEZADO DE LA PAGINA-----------------
+$titulo_actual = $con->getTitulo();
+$icono_actual = $con->getIcono();
 require_once('../verCarrito.php');
 ?>

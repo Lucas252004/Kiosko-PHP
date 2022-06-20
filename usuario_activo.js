@@ -41,12 +41,13 @@
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        console.log("UID " + uid)
+        console.log("UID " + uid);
         titulo.innerHTML = user.email
         
         pasarVariable(uid)
 
         console.log(user)
+        console.log("AAAAAAAAAA")
         // ...
     } else {
         // User is signed out

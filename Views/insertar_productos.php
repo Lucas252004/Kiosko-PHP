@@ -8,6 +8,14 @@
     <title>Insertar Productos</title>
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'>
 </head>
+<style>
+    #icono{
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
+</style>
 <?php
 $prueba = "white";
 foreach($color_actual as $color){
@@ -21,11 +29,18 @@ echo "<body style='background-color:". $prueba . ";'>";
     foreach($color_actual_menu as $color_menu){
         $test = $color_menu['codigo_color'];
     }
-    
-    echo "<nav class='navbar navbar-expand-lg navbar-dark bg-". $test ."' >";
+    foreach($icono_actual as $icono){
+        $imagen_icono = $icono['codigo_color'];
+    }
+    echo "<nav class='navbar navbar-expand-lg navbar-dark bg-". $test ."' ><img src='../". $imagen_icono ."' alt='' id='icono'>";
     ?>
     <div class='container-fluid'>
-        <a class='navbar-brand' href='#'>The Editable Web</a>
+    <?php
+        //TITULO DE LA PAGINA GUARDADA EN LA BASE DE DATOS
+        foreach($titulo_actual as $titulo){
+           echo "<a class='navbar-brand' href='#'>". $titulo['codigo_color'] ."</a>";
+        }
+        ?>
         <ul class='nav justify-content-end'>
             <li class='nav-item'>
                 <a class='nav-link active' aria-current='page' href='http://localhost/proyecto_php/' style='color: white'>Inicio</a>
@@ -131,6 +146,21 @@ echo "<body style='background-color:". $prueba . ";'>";
         <!-- <span>ó Escribe el nombre en inglés de un color:</span>
         <input type="text" name="nombrecolor" /><br/> -->
         <input name="cambiar_color_menu" type="submit" value="Cambiar el menu!" />
+    </form>
+    <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
+    <?php
+    foreach($titulo_actual as $titulo){
+        echo "<input type='text' name='titulo_actual' value='" . $titulo['codigo_color'] . "'>";
+    }
+    ?>
+    <input type="submit" name='cambiar_titulo'>
+    </form>
+    <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST" enctype='multipart/form-data'>
+        <div class='mb-3 col-6'>
+            <label for='formFileMultiple' class='form-label'>Cambiar Icono de la Pagina</label>
+            <input class='form-control' type='file' name ='icono' multiple>
+        </div>
+        <input type='submit' value='Añadir producto' name='cambiar_icono'> 
     </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
