@@ -49,9 +49,6 @@ echo "<body style='background-color:". $prueba . ";'>";
                 <a class='nav-link' href='http://localhost/proyecto_php/Controller/C_carrito.php' style='color: white'>Ver Carrito</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='#' style='color: white' >Iniciar Sesion</a>
-            </li>
-            <li class='nav-item'>
                 <a class='nav-link' href='http://localhost/proyecto_php/Controller/C_insertar_producto.php' style='color: white'>Añadir Productos</a>
             </li>
         </ul>
@@ -163,10 +160,14 @@ echo "<body style='background-color:". $prueba . ";'>";
         <input type='submit' value='Añadir producto' name='cambiar_icono'> 
     </form>
     </div>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src='../usuario_activo.js' type='module'></script>
+    <script src='../verificar_admin.js' type='module'></script>
 </body>
 </html>
 

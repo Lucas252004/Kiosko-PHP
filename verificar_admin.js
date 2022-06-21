@@ -1,7 +1,7 @@
 
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+    import { getDatabase, set, ref, update, get, child } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
     import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider,  signInWithRedirect, getRedirectResult, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
     const firebaseConfig = {
         apiKey: "AIzaSyDLBElztDZrLNtNOtd_3pWFcV5H6MEI6DM",
@@ -21,33 +21,23 @@
     const user = auth.currentUser;
     let titulo = document.getElementById('titulo')
     let id_usuario = document.getElementById('id_usuario')
-    //let test = "TEST"
-    function pasarVariable(uid){
-        id_usuario.innerHTML = "<input type='hidden' id='id_usuario' name ='id_usuario'  value="+uid+" >"
-        let form = document.getElementById('seccion_id')
-            
-            let data = new FormData(form)
-            fetch('Controller/C_recibir.php',{
-                method: 'POST',
-                body: data
-            }).then(datos => datos.json())
-            .then(datosFormulario =>{
-                console.log(datosFormulario)
-            })
-        
-    }
     onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         console.log("UID " + uid);
-        titulo.innerHTML = user.email
-        
-        pasarVariable(uid)
+        //titulo.innerHTML = user.email
+    //    if(user.email != "email.admin@admin.com"){
+    //         console.log("NO SOS ADMIN")
+    //         alert("No estas autenticado como administrador")
+    //         window.location.replace("http://localhost/proyecto_php/")
+    //     } 
+       // pasarVariable(uid)
 
         console.log(user)
-        console.log("AAAAAAAAAA")
+        //console.log("CCCCCCCCCCCCCCCCCC")
+        console.log(user.username)
         // ...
     } else {
         // User is signed out
@@ -57,16 +47,15 @@
         window.location.replace("http://localhost/proyecto_php/Views/iniciar_sesion.php")
     }
     });
-    
-    const boton3 = document.getElementById('logout')
-    boton3.addEventListener('click', (e) =>{
-        e.preventDefault()
-        signOut(auth).then(() => {
-        // Sign-out successful.
-            alert("Has cerrado sesion")
+    // const boton3 = document.getElementById('logout')
+    // boton3.addEventListener('click', (e) =>{
+    //     e.preventDefault()
+    //     signOut(auth).then(() => {
+    //     // Sign-out successful.
+    //         alert("Has cerrado sesion")
             
-        }).catch((error) => {
-        // An error happened.
-            alert("ERROR")
-        });
-    })
+    //     }).catch((error) => {
+    //     // An error happened.
+    //         alert("ERROR")
+    //     });
+    // })

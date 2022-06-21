@@ -49,9 +49,6 @@ echo "<body style='background-color:". $prueba . ";'>";
                 <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_carrito.php" style="color: white">Ver Carrito</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" style="color: white">Iniciar Sesion</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_insertar_producto.php" style="color: white">Añadir Productos</a>
             </li>
         </ul>

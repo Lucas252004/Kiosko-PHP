@@ -27,7 +27,7 @@
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in
-                alert('Usuario creado con Exito !')
+                alert('Usuario creado Exitosamente !')
                 const user = userCredential.user
                 set(ref(database, 'users/' + user.uid),{
                     id: user.uid,
@@ -66,7 +66,7 @@
     google.addEventListener('click', (e) =>{
         e.preventDefault()
         console.log("CLICK")
-        alert("GOOGLE")
+        alert("REDIRECCIONANDO")
         signInWithPopup(auth, provider)
         //getRedirectResult(auth)
             .then((result) => {

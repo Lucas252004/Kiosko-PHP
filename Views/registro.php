@@ -46,9 +46,7 @@
             </form>
             <hr class="my-4">
             <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39; "
-               id="google">Continuar con Google</button>
-            <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998; margin-top:10px;"
-              type="submit">Continuar con Facebook</button><br>
+               id="google">Continuar con Google</button><br>
               <a href="iniciar_sesion.php">Ya tienes cuenta? Inicia Sesion</a>
           </div>
         </div>
