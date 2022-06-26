@@ -144,6 +144,7 @@ echo "<body style='background-color:". $prueba . ";'>";
         <input type="text" name="nombrecolor" /><br/> -->
         <input name="cambiar_color_menu" type="submit" value="Cambiar el menu!" />
     </form>
+    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
     <?php
     foreach($titulo_actual as $titulo){
@@ -152,15 +153,17 @@ echo "<body style='background-color:". $prueba . ";'>";
     ?>
     <input type="submit" name='cambiar_titulo'>
     </form>
+    </div>
+    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST" enctype='multipart/form-data'>
         <div class='mb-3 col-6'>
             <label for='formFileMultiple' class='form-label'>Cambiar Icono de la Pagina</label>
             <input class='form-control' type='file' name ='icono' multiple>
         </div>
-        <input type='submit' value='Añadir producto' name='cambiar_icono'> 
+        <input type='submit' value='Cambiar Icono' name='cambiar_icono'> 
     </form>
     </div>
-
+    </div>
 
 
 
