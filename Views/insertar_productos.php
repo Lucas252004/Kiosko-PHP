@@ -55,7 +55,7 @@ echo "<body style='background-color:". $prueba . ";'>";
     </div>
     </nav>
     <!--Formulario para añadir productos-->
-    <div align='center'>
+    <!-- <div align='center'>
     <h2>Agregar Producto</h2>
     <div align='center' style='background-color: #DEDEDE;' class='col-6'>
         <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST' enctype='multipart/form-data' style='padding: 10px; margin: 10px;'>
@@ -70,13 +70,18 @@ echo "<body style='background-color:". $prueba . ";'>";
             <input type='submit' value='Añadir producto' name='insertar'>
         </form>
     </div>
-    </div>
-    <div>
-    <?php
-        echo "<table class='table table-dark table-striped'>
+    </div> -->
+    
+    <div align="center">
+    <h1>Productos del Catalogo</h1>
+    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' data-bs-whatever='@mdo'>Añadir un nuevo Producto</button><br>
+    <br><?php
+        echo "
+        <div align='center' class='col-10' style='background-color: #EBEBEB; border-radius: 15px;'>
+        <table class='table'>
         <thead>
-        <tr>
-            <th scope='col' type='hidden'>ID</th>
+        <tr >
+            <th scope='col' >ID</th>
             <th scope='col'>Nombre</th>
             <th scope='col'>Descripcion</th>
             <th scope='col'>Precio</th>
@@ -90,8 +95,8 @@ echo "<body style='background-color:". $prueba . ";'>";
         echo " 
         <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST' enctype='multipart/form-data'> 
         <tbody>
-        <tr>
-            <th scope='row'><input type='text' name='id_producto' value='" . $producto['id_producto'] . "' readonly></th>
+        <tr >
+            <th scope='row' ><input type='text' name='id_producto' value='" . $producto['id_producto'] . "' readonly></th>
             <td><input type='text' name='nombre_producto' value='" . $producto['nombre_producto'] . "'></td>
             <td><input type='text' name='descripcion' value='" . $producto['descripcion'] . "'></td>
             <td><input type='text' name='precio' value='" . $producto['precio'] . "'></td>
@@ -108,59 +113,107 @@ echo "<body style='background-color:". $prueba . ";'>";
 
         }
 
-        echo "</table>";
+        echo "</table>
+        </div>
+        ";
  
         
     ?>
     </div>
     <div align="center">
+    <!--Formulario para añadir productos-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir un Nuevo Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="post" enctype='multipart/form-data'>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nombre del Producto:</label>
+                        <input type="text" class="form-control" id="recipient-name" name='nombre' placeholder='Nombre del Producto' required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Descripcion:</label>
+                        <textarea class="form-control" id="message-text" name="descripcion"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Precio:</label>
+                        <input type="number" class="form-control" id="recipient-name" name='precio' placeholder='Precio' required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Cantidad:</label>
+                        <input type="number" class="form-control" id="recipient-name" name='cantidad' placeholder='Cantidad' required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Imagen:</label>
+                        <input type="file" class="form-control" id="recipient-name" name='foto' multiple>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <input type="submit" class="btn btn-primary"  name='insertar' value="Añadir">
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+    </div>
+
     <h2>Edicion de Diseño</h2>
-    <h3>Cambiar color de Fondo</h3>
+    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
+    <h4>Cambiar color de Fondo</h4>
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
-        <span>Selecciona un color de la lista: </span>
-        <select id=”colorlista” name="colorlista">
+        <span>Selecciona un color de la lista: </span><br>
+        <select id=”colorlista” name="colorlista" class="form-select" aria-label="Default select example">
         <option value="White" >Blanco</option>
         <option value="LimeGreen" >Lima</option>
         <option value="YellowGreen">Amarillo verdoso</option>
         <option value="Crimson" >Carmesí</option>
         <option value="SteelBlue" >Azul Acero</option>
         <option value="#9D649B" >Violeta</option>
-        </select>
-        <!-- <span>ó Escribe el nombre en inglés de un color:</span>
-        <input type="text" name="nombrecolor" /><br/> -->
-        <input name="cambiar_color" type="submit" value="Cambiar el fondo!" />
+        </select><br>
+        <span>Sino escribe el codigo del color:</span>
+        <input type="text" name="colorlista" /><br/>
+        <br><input name="cambiar_color" class="btn btn-secondary" type="submit" class="btn btn-secondary" value="Cambiar el fondo" />
     </form>
-    <h3>Cambiar color de la barra de navegacion</h3>
+    </div>
+
+    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
+    <h4>Cambiar color de la barra de navegacion</h4>
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
-        <span>Selecciona un color de la lista: </span>
-        <select id=”colorlista_menu” name="colorlista_menu">
+        <span>Selecciona un color de la lista: </span><br>
+        <select id=”colorlista_menu” name="colorlista_menu" class="form-select" aria-label="Default select example">
         <option value="secondary" >Gris</option>
         <option value="success">Verde</option>
         <option value="info" >Celeste</option>
         <option value="danger" >Rojo</option>
         <option value="dark" >Negro</option>
-        </select>
+        </select><br>
         <!-- <span>ó Escribe el nombre en inglés de un color:</span>
         <input type="text" name="nombrecolor" /><br/> -->
-        <input name="cambiar_color_menu" type="submit" value="Cambiar el menu!" />
+        <br><input class="btn btn-secondary" name="cambiar_color_menu" type="submit" value="Cambiar el menu" />
     </form>
+    </div>
     <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
+    <h4>Cambiar Titulo Actual de la Pagina</h4>
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
     <?php
     foreach($titulo_actual as $titulo){
-        echo "<input type='text' name='titulo_actual' value='" . $titulo['codigo_color'] . "'>";
+        echo "<div class='col-8'><input type='text' class='form-control' name='titulo_actual' value='" . $titulo['codigo_color'] . "'></div>";
     }
-    ?>
-    <input type="submit" name='cambiar_titulo'>
+    ?><br>
+    <br><input type="submit" class="btn btn-secondary" name='cambiar_titulo' style="margin-button: 20px;">
     </form>
     </div>
     <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST" enctype='multipart/form-data'>
-        <div class='mb-3 col-6'>
-            <label for='formFileMultiple' class='form-label'>Cambiar Icono de la Pagina</label>
+        <div class='mb-3 col-8'>
+            <h4>Cambiar Icono de la Pagina</h4>
             <input class='form-control' type='file' name ='icono' multiple>
         </div>
-        <input type='submit' value='Cambiar Icono' name='cambiar_icono'> 
+        <input type='submit' class="btn btn-secondary" value='Cambiar Icono' name='cambiar_icono'> 
     </form>
     </div>
     </div>
