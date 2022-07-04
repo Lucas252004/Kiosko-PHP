@@ -54,70 +54,32 @@ echo "<body style='background-color:". $prueba . ";'>";
         </ul>
     </div>
     </nav>
-    <!--Formulario para añadir productos-->
-    <!-- <div align='center'>
-    <h2>Agregar Producto</h2>
-    <div align='center' style='background-color: #DEDEDE;' class='col-6'>
-        <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST' enctype='multipart/form-data' style='padding: 10px; margin: 10px;'>
-            <input type='text' name='nombre' placeholder='Nombre del Producto'style='padding: 10px; margin: 10px;'><br>
-            <input type='text' name='descripcion' placeholder='Descripcion'style='padding: 10px; margin: 10px;'><br>
-            <input type='text' name='precio' placeholder='Precio'style='padding: 10px; margin: 10px;'>
-            <input type='text' name='cantidad' placeholder='Cantidad'style='padding: 10px; margin: 10px;'>
-            <div class='mb-3 col-6'>
-                <label for='formFileMultiple' class='form-label'>Imagen del Producto</label>
-                <input class='form-control' type='file' name ='foto' id='formFileMultiple' multiple>
-            </div>
-            <input type='submit' value='Añadir producto' name='insertar'>
-        </form>
-    </div>
-    </div> -->
     
     <div align="center">
     <h1>Productos del Catalogo</h1>
-    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' data-bs-whatever='@mdo'>Añadir un nuevo Producto</button><br>
-    <br><?php
+    <button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#exampleModal' data-bs-whatever='@mdo'>Añadir un nuevo Producto</button><br>
+    <?php
+    foreach($productos as $producto){
         echo "
-        <div align='center' class='col-10' style='background-color: #EBEBEB; border-radius: 15px;'>
-        <table class='table'>
-        <thead>
-        <tr >
-            <th scope='col' >ID</th>
-            <th scope='col'>Nombre</th>
-            <th scope='col'>Descripcion</th>
-            <th scope='col'>Precio</th>
-            <th scope='col'>Cantidad</th>
-            <th scope='col'>Imagen</th>
-            <th scope='col'>Cambiar Imagen</th>
-        </tr>
-        </thead>";
-        //Recorro el array con los valores de la base de datos  
-        foreach($productos as $producto){
-        echo " 
-        <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST' enctype='multipart/form-data'> 
-        <tbody>
-        <tr >
-            <th scope='row' ><input type='text' name='id_producto' value='" . $producto['id_producto'] . "' readonly></th>
-            <td><input type='text' name='nombre_producto' value='" . $producto['nombre_producto'] . "'></td>
-            <td><input type='text' name='descripcion' value='" . $producto['descripcion'] . "'></td>
-            <td><input type='text' name='precio' value='" . $producto['precio'] . "'></td>
-            <td><input type='text' name='cantidad' value='" . $producto['cantidad'] . "'></td>
-            <td><img src='../".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:50px; width:50px; border-radius: 10px;'></td>
-            <div class='col-6'><td><input class='form-control' type='file' name='foto_editar' multiple></div><td>
-            <td><input type='submit' name='editar_producto' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' data-bs-whatever='@mdo' value='Editar'></td>
-            <td><input type='submit' class='btn btn-danger' name='borrar_producto' value='Borrar'></td>
+        <form action='http://localhost/proyecto_php/Controller/C_insertar_producto.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>
+            <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
+            <div class='card-body'>
             
-        </tr>
-
-        </tbody>";
-        echo "</form>";
-
-        }
-
-        echo "</table>
-        </div>
-        ";
- 
+            <img src='../".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>
+            <br><input type='text' class='list-group-item' name='id_producto' value='".$producto['id_producto'] ."' readonly ><br>
+            <br><input type='text' class='list-group-item' name='nombre_producto' value='" . $producto['nombre_producto'] . "'><br>
+            <br><input type='text' class='list-group-item' name='descripcion' value='" . $producto['descripcion'] . "'><br>
+            <br><input type='text' class='list-group-item' name='precio' value='" . $producto['precio'] . "'><br>
+            <br><input type='text' class='list-group-item' name='cantidad' value='" . $producto['cantidad'] . "'><br>
+            <br><input class='form-control' type='file' name='foto_editar' multiple><br>
         
+            <br><input type='submit' name='editar_producto' class='btn btn-primary' value='Editar'>
+            <input type='submit' class='btn btn-danger' name='borrar_producto' value='Borrar'>
+            </div>
+            </div>
+        </form>
+        ";
+    }
     ?>
     </div>
     <div align="center">
@@ -161,21 +123,13 @@ echo "<body style='background-color:". $prueba . ";'>";
             </div>
     </div>
 
-    <h2>Edicion de Diseño</h2>
+    <h2>Diseño de la Pagina</h2>
+    <div style='background-color: #DBDBE3;'>
     <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <h4>Cambiar color de Fondo</h4>
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
-        <span>Selecciona un color de la lista: </span><br>
-        <select id=”colorlista” name="colorlista" class="form-select" aria-label="Default select example">
-        <option value="White" >Blanco</option>
-        <option value="LimeGreen" >Lima</option>
-        <option value="YellowGreen">Amarillo verdoso</option>
-        <option value="Crimson" >Carmesí</option>
-        <option value="SteelBlue" >Azul Acero</option>
-        <option value="#9D649B" >Violeta</option>
-        </select><br>
-        <span>Sino escribe el codigo del color:</span>
-        <input type="text" name="colorlista" /><br/>
+        <span>Escribe el codigo del color:</span>
+        <div class="col-8"><input type="text" class="form-control" id="floatingInput" placeholder="Color de Fondo" name="colorlista" /></div></br>
         <br><input name="cambiar_color" class="btn btn-secondary" type="submit" class="btn btn-secondary" value="Cambiar el fondo" />
     </form>
     </div>
@@ -184,6 +138,7 @@ echo "<body style='background-color:". $prueba . ";'>";
     <h4>Cambiar color de la barra de navegacion</h4>
     <form action="http://localhost/proyecto_php/Controller/C_insertar_producto.php" method="POST">
         <span>Selecciona un color de la lista: </span><br>
+        <div class="col-8">
         <select id=”colorlista_menu” name="colorlista_menu" class="form-select" aria-label="Default select example">
         <option value="secondary" >Gris</option>
         <option value="success">Verde</option>
@@ -191,6 +146,7 @@ echo "<body style='background-color:". $prueba . ";'>";
         <option value="danger" >Rojo</option>
         <option value="dark" >Negro</option>
         </select><br>
+        </div>
         <!-- <span>ó Escribe el nombre en inglés de un color:</span>
         <input type="text" name="nombrecolor" /><br/> -->
         <br><input class="btn btn-secondary" name="cambiar_color_menu" type="submit" value="Cambiar el menu" />
@@ -217,7 +173,7 @@ echo "<body style='background-color:". $prueba . ";'>";
     </form>
     </div>
     </div>
-
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

@@ -31,6 +31,7 @@ if(isset($_FILES['foto'])){
     //Llamo a la funcion insertar
     $con->insertar($nombre_producto, $descripcion, $precio, $imagen, $cantidad);
     echo  "<script>alert('Producto Guardado');</script>";
+    header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
 }
 //Borrar Producto del catalogo
 if(isset($_POST['borrar_producto'])){
@@ -38,6 +39,7 @@ if(isset($_POST['borrar_producto'])){
     $id_producto =  $_POST['id_producto'];
     $con->borrarProductoCatalogo($id_producto);
     print_r("Producto Borrado");
+    header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
     
 }
 //Editar Producto del catalogo
@@ -51,18 +53,17 @@ if(isset($_POST['editar_producto'])){
     $cantidad =  $_POST['cantidad'];
     //Guardar imagen en el caso que el usuario haya deseado cambiar la imagen del producto
     if(isset($_FILES['foto_editar'])){
-    $file = $_FILES['foto_editar'];
-    $carpeta = "../img/";
-    $ruta_provisional = $file['tmp_name'];
-    $tipo = $file['type'];
-    $size = $file['size'];
-     //Condicional si el archivo no es una imagen
+        $file = $_FILES['foto_editar'];
+        $carpeta = "../img/";
+        $ruta_provisional = $file['tmp_name'];
+        $tipo = $file['type'];
+        $size = $file['size'];
+        //Condicional si el archivo no es una imagen
         if($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif'){
             echo "El archivo no es una imagen";
             //En caso que no haya una imagen para cambiar, actualizo el producto sin imagen
             $con->actualizarProductoSinImagen($id_producto, $nombre_producto, $descripcion, $precio, $cantidad);
-            echo "Producto Actualizado sin Imagen"; 
-        //Condicional si el archivo es superior a 3MB
+            echo "<script>alert('Producto Actualizado')</script>"; 
         }else if($size > 3*1024*1024){
             echo "Error, el tamaño maximo es de 3MB";
         }else{
@@ -71,9 +72,35 @@ if(isset($_POST['editar_producto'])){
             $imagen='img/'.$nombre_producto;
             //Actualizo el producto con la imagen
             $con->actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $imagen);
-            echo "Producto Actualizado";
+            echo "<script>alert('Producto Actualizado')</script>";
+           // header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
         }
     }
+    // $file = $_FILES['foto_editar'];
+    // $carpeta = "../img/";
+    // $ruta_provisional = $file['tmp_name'];
+    // $tipo = $file['type'];
+    // $size = $file['size'];
+    //  //Condicional si el archivo no es una imagen
+    //     if($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif'){
+    //         echo "El archivo no es una imagen";
+    //         //En caso que no haya una imagen para cambiar, actualizo el producto sin imagen
+    //         $con->actualizarProductoSinImagen($id_producto, $nombre_producto, $descripcion, $precio, $cantidad);
+    //         echo "Producto Actualizado sin Imagen"; 
+    //         //header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
+
+    //     //Condicional si el archivo es superior a 3MB
+    //     }else if($size > 3*1024*1024){
+    //         echo "Error, el tamaño maximo es de 3MB";
+    //     }else{
+    //         $src = $carpeta.$nombre_producto;
+    //         move_uploaded_file($ruta_provisional, $src);
+    //         $imagen='img/'.$nombre_producto;
+    //         //Actualizo el producto con la imagen
+    //         $con->actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $imagen);
+    //         //header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
+    //     }
+    // }
 }
 //Diseño de colores de la Pagina
 if(isset($_POST['cambiar_color'])){
@@ -100,7 +127,7 @@ if(isset($_POST['cambiar_titulo'])){
     print_r($_POST['titulo_actual']);
     $titulo_nuevo = $_POST['titulo_actual'];
     $con->cambiarTitulo($titulo_nuevo);
-    echo "Titulo Cambiado";
+    header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
 }
 //Guardar imagen en el caso que el usuario haya deseado cambiar la imagen del producto
 if(isset($_FILES['icono'])){
@@ -124,6 +151,7 @@ if(isset($_FILES['icono'])){
             //Actualizo el producto con la imagen
             $con->cambiarIcono($imagen);
             echo "Icono Actualizado";
+            header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
         }
 }
 $icono_actual = $con->getIcono();
