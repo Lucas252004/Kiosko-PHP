@@ -59,7 +59,7 @@ echo "<body style='background-color:". $prueba . ";'>";
             $precio = 0;
             //Recorro el array con los valores de la base de datos  
             foreach($producto_carrito as $producto){
-                echo "<form action='verCarrito.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>";
+                echo "<form action='http://localhost/proyecto_php/Controller/C_carrito.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>";
                 echo "<div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >";
                 //Imprimo los valores por pantalla
                 echo "<div class='card-body'>";
