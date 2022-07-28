@@ -54,7 +54,7 @@ echo "<body style='background-color:". $prueba . ";'>";
                 <a class="nav-link" style="color: white" id="logout" >Cerrar Sesion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_insertar_producto.php" style="color: white">Añadir Productos</a>
+                <a class="nav-link" href="http://localhost/proyecto_php/Controller/C_admin.php" style="color: white">Añadir Productos</a>
             </li>
         </ul>
     </div>
@@ -107,7 +107,7 @@ echo "<body style='background-color:". $prueba . ";'>";
                 }
             ?>
         </div>  
-    <script src="usuario_activo.js" type="module"></script>
+    <script src="js/usuario_activo.js" type="module"></script>
 </body>
 
 </html>

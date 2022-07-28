@@ -100,6 +100,20 @@ class Conexion{
         //devuelvo el array con los valores de la base de datos
         return $retorno;
     }
+    //---------VERIFICAR ADMIN---------
+    public function verficarAdmin($nombre_usuario, $pass){
+        //Guardo la consulta en una variable
+        $query = $this->con->query("SELECT * FROM administrador WHERE nombre_usuario = '$nombre_usuario' AND password = '$pass'");
+        $i = 0;
+        $retorno = [];
+
+        while($fila = $query->fetch_assoc()){
+            $retorno[$i] = $fila;  //Almaceno los valores de la consulta en array
+            $i++;
+        }
+        //devuelvo el array con los valores de la base de datos
+        return $retorno;
+    }
     //--------COLORES-----------------
     public function insertarColores($codigo_color){
         $sql = $this->con->query("REPLACE INTO editor (id_color, codigo_color) VALUES (1, '$codigo_color')");
