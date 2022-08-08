@@ -67,25 +67,30 @@ echo "<body style='background-color:". $prueba . ";'>";
     foreach($productos as $producto){
         echo "
         <form action='http://localhost/proyecto_php/Controller/C_admin.php' method='POST' enctype='multipart/form-data' style='display: inline-block'>
-            <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
+        <div class='card mb-3' style='max-width: 540px; margin:10px;'>
+        <div class='row g-0'>
+            <div class='col-md-4'>
+            <img src='../".$producto['imagen']."' style='width:250px; height:250px;' class='img-fluid rounded-start' alt='...'>
+            </div>
+            <div class='col-md-8'>
             <div class='card-body'>
-            
-            <img src='../".$producto['imagen']."' class='card-img-top' alt='foto' style=' height:350px; border-radius: 10px;'><br>
-            <br><input type='text' class='list-group-item' name='id_producto' value='".$producto['id_producto'] ."' readonly ><br>
-            <br><input type='text' class='list-group-item' name='nombre_producto' value='" . $producto['nombre_producto'] . "'><br>
-            <br><input type='text' class='list-group-item' name='descripcion' value='" . $producto['descripcion'] . "'><br>
-            <br><input type='text' class='list-group-item' name='precio' value='" . $producto['precio'] . "'><br>
-            <br><input type='text' class='list-group-item' name='cantidad' value='" . $producto['cantidad'] . "'><br>
-            <br><input class='form-control' type='file' name='foto_editar' multiple><br>
-        
-            <br><input type='submit' name='editar_producto' class='btn btn-primary' value='Editar'>
-            <input type='submit' class='btn btn-danger' name='borrar_producto' value='Borrar'>
+                <input type='text' class='list-group-item' name='id_producto' value='".$producto['id_producto'] ."' readonly >
+                <input type='text' class='list-group-item' name='nombre_producto' value='" . $producto['nombre_producto'] . "'>
+                <input type='text' class='list-group-item' name='descripcion' value='" . $producto['descripcion'] . "'>
+                <input type='text' class='list-group-item' name='precio' value='" . $producto['precio'] . "'>
+                <input type='text' class='list-group-item' name='cantidad' value='" . $producto['cantidad'] . "'>
+                <br><input class='form-control' type='file' name='foto_editar' multiple>
+                <br><input type='submit' name='editar_producto' class='btn btn-primary' value='Editar'>
+                <input type='submit' class='btn btn-danger' name='borrar_producto' value='Borrar'>
             </div>
             </div>
+        </div>
+        </div>
         </form>
         ";
     }
     ?>
+
     </div>
     <div align="center">
     <!--Formulario para añadir productos-->
@@ -129,6 +134,24 @@ echo "<body style='background-color:". $prueba . ";'>";
     </div>
 
     <h2>Diseño de la Pagina</h2>
+    <!----------------------------------COLOR DE FONDO------------------------------------------------->
+    <div class='card mb-3' style='max-width: 540px;'>
+    <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
+    <div class='row g-0'>
+        <div class='col-md-4'>
+        <br><h2>Cambiar Color de Fondo</h2>
+        </div>
+        <div class='col-md-8'>
+        <div class='card-body'>
+            <h5 class='card-title'>Escribe el codigo del color:</h5>
+            <input type="text" class="form-control" id="floatingInput" placeholder="Color de Fondo" name="colorlista" required/>
+            <br><input name="cambiar_color" class="btn btn-primary" type="submit" class="btn btn-secondary" value="Cambiar el fondo" />
+        </div>
+        </div>
+    </div>
+    </div>
+    </form>
+
     <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <h4>Cambiar color de Fondo</h4>
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
@@ -137,7 +160,7 @@ echo "<body style='background-color:". $prueba . ";'>";
         <br><input name="cambiar_color" class="btn btn-secondary" type="submit" class="btn btn-secondary" value="Cambiar el fondo" />
     </form>
     </div>
-
+    <!----------------------------------COLOR DE BARRA DE NAVEGACION------------------------------------------------->
     <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <h4>Cambiar color de la barra de navegacion</h4>
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
@@ -156,6 +179,7 @@ echo "<body style='background-color:". $prueba . ";'>";
         <br><input class="btn btn-secondary" name="cambiar_color_menu" type="submit" value="Cambiar el menu" />
     </form>
     </div>
+    <!----------------------------------TITULO ACTUAL DE LA PAGINA------------------------------------------------->
     <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <h4>Cambiar Titulo Actual de la Pagina</h4>
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
@@ -167,6 +191,7 @@ echo "<body style='background-color:". $prueba . ";'>";
     <br><input type="submit" class="btn btn-secondary" name='cambiar_titulo' style="margin-button: 20px;">
     </form>
     </div>
+    <!----------------------------------ICONO ACTUAL DE LA PAGINA------------------------------------------------->
     <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST" enctype='multipart/form-data'>
         <div class='mb-3 col-8'>
