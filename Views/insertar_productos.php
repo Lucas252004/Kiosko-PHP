@@ -135,7 +135,7 @@ echo "<body style='background-color:". $prueba . ";'>";
 
     <h2>Diseño de la Pagina</h2>
     <!----------------------------------COLOR DE FONDO------------------------------------------------->
-    <div class='card mb-3' style='max-width: 540px;'>
+    <div class='card mb-3' style='max-width: 540px; display:inline-block;'>
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
     <div class='row g-0'>
         <div class='col-md-4'>
@@ -145,64 +145,72 @@ echo "<body style='background-color:". $prueba . ";'>";
         <div class='card-body'>
             <h5 class='card-title'>Escribe el codigo del color:</h5>
             <input type="text" class="form-control" id="floatingInput" placeholder="Color de Fondo" name="colorlista" required/>
-            <br><input name="cambiar_color" class="btn btn-primary" type="submit" class="btn btn-secondary" value="Cambiar el fondo" />
+            <br><input name="cambiar_color" class="btn btn-primary" type="submit" value="Cambiar el fondo" />
         </div>
         </div>
     </div>
     </div>
     </form>
 
-    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
-    <h4>Cambiar color de Fondo</h4>
+
+<!----------------------------------------------------------------------->
+    <div class='card mb-3' style='max-width: 540px; display:inline-block;'>
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
-        <span>Escribe el codigo del color:</span>
-        <div class="col-8"><input type="text" class="form-control" id="floatingInput" placeholder="Color de Fondo" name="colorlista" /></div></br>
-        <br><input name="cambiar_color" class="btn btn-secondary" type="submit" class="btn btn-secondary" value="Cambiar el fondo" />
-    </form>
-    </div>
-    <!----------------------------------COLOR DE BARRA DE NAVEGACION------------------------------------------------->
-    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
-    <h4>Cambiar color de la barra de navegacion</h4>
-    <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
-        <span>Selecciona un color de la lista: </span><br>
-        <div class="col-8">
-        <select id=”colorlista_menu” name="colorlista_menu" class="form-select" aria-label="Default select example">
-        <option value="secondary" >Gris</option>
-        <option value="success">Verde</option>
-        <option value="info" >Celeste</option>
-        <option value="danger" >Rojo</option>
-        <option value="dark" >Negro</option>
-        </select><br>
+    <div class='row g-0'>
+        <div class='col-md-4'>
+        <br><h2>Cambiar Titulo de la Pagina</h2>
         </div>
-        <!-- <span>ó Escribe el nombre en inglés de un color:</span>
-        <input type="text" name="nombrecolor" /><br/> -->
-        <br><input class="btn btn-secondary" name="cambiar_color_menu" type="submit" value="Cambiar el menu" />
-    </form>
+        <div class='col-md-8'>
+        <div class='card-body'>
+            <h5 class='card-title'>Escribe el nuevo titulo</h5>
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nuevo titulo" name="titulo_actual" required/>
+            <br><input name="cambiar_titulo" class="btn btn-primary" type="submit"  value="Cambiar el titulo" />
+        </div>
+        </div>
     </div>
-    <!----------------------------------TITULO ACTUAL DE LA PAGINA------------------------------------------------->
-    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
-    <h4>Cambiar Titulo Actual de la Pagina</h4>
+    </div>
+    </form>
+    <!----------------------------------------------------------------------->
+    <div class='card mb-3' style='max-width: 540px; display:inline-block;'>
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
-    <?php
-    foreach($titulo_actual as $titulo){
-        echo "<div class='col-8'><input type='text' class='form-control' name='titulo_actual' value='" . $titulo['codigo_color'] . "'></div>";
-    }
-    ?><br>
-    <br><input type="submit" class="btn btn-secondary" name='cambiar_titulo' style="margin-button: 20px;">
-    </form>
+    <div class='row g-0'>
+        <div class='col-md-4'>
+        <br><h2>Cambiar Color del Menu</h2>
+        </div>
+        <div class='col-md-8'>
+        <div class='card-body'>
+            <h5 class='card-title'>Elige un nuevo color:</h5>
+            <select id=”colorlista_menu” name="colorlista_menu" class="form-select" aria-label="Default select example">
+            <option value="secondary" >Gris</option>
+            <option value="success">Verde</option>
+            <option value="info" >Celeste</option>
+            <option value="danger" >Rojo</option>
+            <option value="dark" >Negro</option>
+            </select>
+            <br><input class="btn btn-primary"  name="cambiar_color_menu" type="submit" value="Cambiar el menu" />
+        </div>
+        </div>
     </div>
-    <!----------------------------------ICONO ACTUAL DE LA PAGINA------------------------------------------------->
-    <div class='card' style='width: 18rem; display: inline-block ; margin: 10px;'align='center'; >
+    </div>
+    </form>
+    <!----------------------------------------------------------------------->
+    <div class='card mb-3' style='max-width: 540px; display:inline-block;'>
     <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST" enctype='multipart/form-data'>
-        <div class='mb-3 col-8'>
-            <h4>Cambiar Icono de la Pagina</h4>
-            <input class='form-control' type='file' name ='icono' multiple>
+    <div class='row g-0'>
+        <div class='col-md-4'>
+        <br><h2>Cambiar Icono de la Pagina</h2>
         </div>
-        <input type='submit' class="btn btn-secondary" value='Cambiar Icono' name='cambiar_icono'> 
+        <div class='col-md-8'>
+        <div class='card-body'>
+            <h5 class='card-title'>Elige el nuevo icono</h5>
+            <input class='form-control' type='file' name ='icono' multiple>
+            <br><input type='submit' class="btn btn-primary" value='Cambiar Icono' name='cambiar_icono'>
+        </div>
+        </div>
+    </div>
+    </div>
     </form>
-    </div>
-    </div>
-
+    <!----------------------------------------------------------------------->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

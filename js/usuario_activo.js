@@ -47,7 +47,6 @@ if (user) {
 } else {
     // User is signed out
     // ...
-    alert("Tienes que iniciar sesion")
     window.location.replace("http://localhost/proyecto_php/Views/iniciar_sesion.php")
 }
 });
