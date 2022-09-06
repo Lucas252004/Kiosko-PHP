@@ -45,8 +45,8 @@ class Conexion{
         $sql = $this->con->query("UPDATE productos SET nombre_producto = '$nombre_producto', descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad' WHERE id_producto = '$id_producto'");
     }
     //Esta funcion se utiliza para insertar productos a la base de datos
-    public function insertar($nombre_producto, $descripcion, $nombre, $imagen, $cantidad){
-        $sql = $this->con->query("INSERT INTO productos (nombre_producto, descripcion, precio, imagen, cantidad) VALUES ('$nombre_producto', '$descripcion', '$nombre', '$imagen', '$cantidad')");
+    public function insertar($nombre_producto, $descripcion, $nombre, $imagen, $cantidad, $categoria){
+        $sql = $this->con->query("INSERT INTO productos (nombre_producto, descripcion, precio, imagen, cantidad, categoria) VALUES ('$nombre_producto', '$descripcion', '$nombre', '$imagen', '$cantidad', '$categoria')");
        
     }
     //Agregar al carrito un producto
@@ -179,6 +179,27 @@ class Conexion{
         }
         //devuelvo el array con los valores de la base de datos
         return $retorno;    
+    }
+    public function insertarCategoria($categoria){
+        $sql = $this->con->query("INSERT INTO categorias(nombre_categoria) VALUES ('$categoria')");
+    }
+    public function getCategorias(){
+        $query = $this->con->query('SELECT * FROM categorias');
+        $i = 0;
+        $retorno = [];
+
+        while($fila = $query->fetch_assoc()){
+            $retorno[$i] = $fila;  //Almaceno los valores de la consulta en array
+            $i++;
+        }
+        //devuelvo el array con los valores de la base de datos
+        return $retorno;  
+    }
+    public function editarCategoria($id_categoria, $nombre_categoria){
+        $sql = $this->con->query("UPDATE categorias SET nombre_categoria = '$nombre_categoria' WHERE id = '$id_categoria'");
+    }
+    public function borrarCategoria($id_categoria){
+        $sql = $this->con->query("DELETE FROM categorias WHERE id = '$id_categoria'");
     }
     }
 ?>

@@ -79,8 +79,15 @@ echo "<body style='background-color:". $prueba . ";'>";
                 <input type='text' class='list-group-item' name='descripcion' value='" . $producto['descripcion'] . "'>
                 <input type='text' class='list-group-item' name='precio' value='" . $producto['precio'] . "'>
                 <input type='text' class='list-group-item' name='cantidad' value='" . $producto['cantidad'] . "'>
+                <input type='text' class='list-group-item' name='categoria' value='" . $producto['categoria'] . "' readonly>
                 <br><input class='form-control' type='file' name='foto_editar' multiple>
-                <br><input type='submit' name='editar_producto' class='btn btn-primary' value='Editar'>
+                <br><p>Mover de Categoria</p>";
+                echo "<select id='colorlista_menu' name='lista_categoria' class='form-select' aria-label='Default select example'>";
+                foreach($categorias as $categoria){
+                    echo "<option value='".$categoria['nombre_categoria']."' >" . $categoria['nombre_categoria'] . "</option>";
+                }
+                echo "</select>";
+                echo "<br><input type='submit' name='editar_producto' class='btn btn-primary' value='Editar'>
                 <input type='submit' class='btn btn-danger' name='borrar_producto' value='Borrar'>
             </div>
             </div>
@@ -123,6 +130,16 @@ echo "<body style='background-color:". $prueba . ";'>";
                         <label for="recipient-name" class="col-form-label">Imagen:</label>
                         <input type="file" class="form-control" id="recipient-name" name='foto' multiple>
                     </div>
+                    <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Categoria:</label>
+                    <select id=”colorlista_menu” name="lista_categorias" class="form-select" aria-label="Default select example">
+                    <?php
+                    foreach($categorias as $categoria){
+                        echo "<option value='".$categoria['nombre_categoria']."' >" . $categoria['nombre_categoria'] . "</option>";
+                    }
+                    ?>
+                    </select>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <input type="submit" class="btn btn-primary"  name='insertar' value="Añadir">
@@ -149,8 +166,9 @@ echo "<body style='background-color:". $prueba . ";'>";
         </div>
         </div>
     </div>
-    </div>
     </form>
+    </div>
+    
 
 
 <!----------------------------------------------------------------------->
@@ -211,7 +229,55 @@ echo "<body style='background-color:". $prueba . ";'>";
     </div>
     </form>
     <!----------------------------------------------------------------------->
-
+    <h2>Categorias de la Pagina</h2>
+    <div class='card mb-3' style='max-width: 540px; display:inline-block;'>
+    <form action="http://localhost/proyecto_php/Controller/C_admin.php" method="POST">
+    <div class='row g-0'>
+        <div class='col-md-4'>
+        <br><h4>Nueva Categoria</h4>
+        </div>
+        <div class='col-md-8'>
+        <div class='card-body'>
+            <h5 class='card-title'>Escribe la nueva categoria</h5>
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nueva Categoria" name="categoria" required/>
+            <br><input name="agregar_categoria" class="btn btn-primary" type="submit"  value="Agregar" />
+        </div>
+        </div>
+    </div>
+    </div>
+    </form>
+    <div class="col-6">
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Borrar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach($categorias as $categoria){
+            echo "
+            <form action='http://localhost/proyecto_php/Controller/C_categorias.php' method='POST'>
+            <tr>
+            <th scope='row'><input type='text' value='". $categoria['id'] ."' name='id_categoria' readonly style='border:0;'></th>
+            <td><input type='text' value='". $categoria['nombre_categoria'] ."' name='nombre_categoria' style='border:0;'></td>
+            <td>
+            <input type='submit' name='editar_categoria' value='Cambiar' class='btn btn-warning'>
+            </td>
+            <td>
+            <input type='submit' name='borrar_categoria' value='Eliminar' class='btn btn-danger'>
+            </td>
+            </tr>
+            </form>       
+            ";
+        }
+        ?>
+    </tbody>
+    </table>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

@@ -65,8 +65,17 @@ echo "<body style='background-color:". $prueba . ";'>";
             <input type="hidden" id='id_usuario' style='color:red;'>
             <!-- <input type="submit" id="enviar" value="enviar"> -->
         </form>
-        
         <h3 id="titulo"></h3> 
+        <div class="col-3">
+        <select  name="lista_categorias" class="form-select" aria-label="Default select example">
+        <?php
+        foreach($categorias as $categoria){
+            echo "<option value='".$categoria['nombre_categoria']."' >" . $categoria['nombre_categoria'] . "</option>";
+        }
+        ?>
+        </select>
+        </div>
+        
             <?php
                 //Recorro el array con los valores de la base de datos  
                 foreach($productos as $producto){

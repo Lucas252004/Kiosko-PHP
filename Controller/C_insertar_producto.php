@@ -10,6 +10,7 @@ if(isset($_FILES['foto'])){
      $precio = $_POST['precio'];
      $nombre_producto = $_POST['nombre'];
      $cantidad = $_POST['cantidad'];
+     $categoria = $_POST['lista_categorias'];
      //Guardar imagen
      $file = $_FILES['foto'];
      $carpeta = "../img/";
@@ -30,7 +31,7 @@ if(isset($_FILES['foto'])){
     }
     //Instruccion SQL
     //Llamo a la funcion insertar
-    $con->insertar($nombre_producto, $descripcion, $precio, $imagen, $cantidad);
+    $con->insertar($nombre_producto, $descripcion, $precio, $imagen, $cantidad, $categoria);
     echo  "<script>alert('Producto Guardado');</script>";
     header("Location: http://localhost/proyecto_php/Controller/C_admin.php");
 }

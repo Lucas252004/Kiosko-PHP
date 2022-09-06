@@ -8,6 +8,7 @@ $productos = $con->getProductos();
 //Llamo a la function getUsuarioActual() para saber que usuario esta conectado actualmente
 $usuario = $con->getUsuarioActual();
 $usuario_actual = "";
+$categorias = $con->getCategorias();
 //-----------------AÑADIR AL CARRITO---------------------
 if(isset($_POST['boton'])){
     $id_producto = [];
