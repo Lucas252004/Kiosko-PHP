@@ -37,12 +37,12 @@ class Conexion{
         return $retorno;
     }
     //Actualizar producto del catalogo
-    public function actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $imagen){
-        $sql = $this->con->query("UPDATE productos SET nombre_producto = '$nombre_producto', descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad', imagen = '$imagen' WHERE id_producto = '$id_producto'");
+    public function actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $imagen, $categoria){
+        $sql = $this->con->query("UPDATE productos SET nombre_producto = '$nombre_producto', descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad', imagen = '$imagen',  categoria='$categoria' WHERE id_producto = '$id_producto'");
     }
     //Actualizar producto del catalogo sin imagen
-    public function actualizarProductoSinImagen($id_producto, $nombre_producto, $descripcion, $precio, $cantidad){
-        $sql = $this->con->query("UPDATE productos SET nombre_producto = '$nombre_producto', descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad' WHERE id_producto = '$id_producto'");
+    public function actualizarProductoSinImagen($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $categoria){
+        $sql = $this->con->query("UPDATE productos SET nombre_producto = '$nombre_producto', descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad', categoria='$categoria' WHERE id_producto = '$id_producto'");
     }
     //Esta funcion se utiliza para insertar productos a la base de datos
     public function insertar($nombre_producto, $descripcion, $nombre, $imagen, $cantidad, $categoria){
@@ -200,6 +200,18 @@ class Conexion{
     }
     public function borrarCategoria($id_categoria){
         $sql = $this->con->query("DELETE FROM categorias WHERE id = '$id_categoria'");
+    }
+    public function getProductoCategoria($categoria){
+        $query = $this->con->query("SELECT * FROM productos WHERE categoria = '$categoria'");
+        $i = 0;
+        $retorno = [];
+
+        while($fila = $query->fetch_assoc()){
+            $retorno[$i] = $fila;  //Almaceno los valores de la consulta en array
+            $i++;
+        }
+        //devuelvo el array con los valores de la base de datos
+        return $retorno; 
     }
     }
 ?>

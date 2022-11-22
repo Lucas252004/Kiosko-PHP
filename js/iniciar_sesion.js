@@ -30,7 +30,7 @@ onAuthStateChanged(auth, (user) => {
         const uid = user.uid;
         console.log("UID " + uid)
         //console.log(user)
-            
+        window.location.replace("http://localhost/proyecto_php")
         // ...
     } else {
         // User is signed out

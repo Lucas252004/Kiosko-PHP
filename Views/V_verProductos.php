@@ -66,14 +66,21 @@ echo "<body style='background-color:". $prueba . ";'>";
             <!-- <input type="submit" id="enviar" value="enviar"> -->
         </form>
         <h3 id="titulo"></h3> 
-        <div class="col-3">
-        <select  name="lista_categorias" class="form-select" aria-label="Default select example">
-        <?php
-        foreach($categorias as $categoria){
-            echo "<option value='".$categoria['nombre_categoria']."' >" . $categoria['nombre_categoria'] . "</option>";
-        }
-        ?>
-        </select>
+        <form action="index.php" method="POST">
+
+        
+            <div class="col-3">
+            
+            <select  name="lista_categorias" class="form-select" aria-label="Default select example" >
+            <option value="todo">Todos los productos</option>
+            <?php
+            foreach($categorias as $categoria){
+                echo "<option value='".$categoria['nombre_categoria']."' >" . $categoria['nombre_categoria'] . "</option>";
+            }
+            ?>
+            </select>
+            <br><input type="submit" class="btn btn-success" name="filtrar" value="Filtrar">
+        </form>
         </div>
         
             <?php

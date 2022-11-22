@@ -53,6 +53,7 @@ if(isset($_POST['editar_producto'])){
     $descripcion =  $_POST['descripcion'];
     $precio =  $_POST['precio'];
     $cantidad =  $_POST['cantidad'];
+    $categoria = $_POST['lista_categoria'];
     //Guardar imagen en el caso que el usuario haya deseado cambiar la imagen del producto
     if(isset($_FILES['foto_editar'])){
         $file = $_FILES['foto_editar'];
@@ -63,10 +64,10 @@ if(isset($_POST['editar_producto'])){
         $size = $file['size'];
         //Condicional si el archivo no es una imagen
         if($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif'){
-            echo "El archivo no es una imagen";
             //En caso que no haya una imagen para cambiar, actualizo el producto sin imagen
-            $con->actualizarProductoSinImagen($id_producto, $nombre_producto, $descripcion, $precio, $cantidad);
-            echo "<script>alert('Producto Actualizado')</script>"; 
+            $con->actualizarProductoSinImagen($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $categoria);
+            echo "<script>alert('Producto Actualizado')</script>";
+            header("Location: http://localhost/proyecto_php/Controller/C_admin.php");
         }else if($size > 3*1024*1024){
             echo "Error, el tamaño maximo es de 3MB";
         }else{
@@ -74,9 +75,9 @@ if(isset($_POST['editar_producto'])){
             move_uploaded_file($ruta_provisional, $src);
             $imagen='img/'.$nombre_imagen;
             //Actualizo el producto con la imagen
-            $con->actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $imagen);
+            $con->actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $cantidad, $imagen, $categoria);
             echo "<script>alert('Producto Actualizado con Imagen')</script>";
-           // header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
+            header("Location: http://localhost/proyecto_php/Controller/C_insertar_producto.php");
         }
     }
 }

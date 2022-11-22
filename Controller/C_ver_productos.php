@@ -16,10 +16,18 @@ if(isset($_POST['boton'])){
     foreach($usuario as $i){
         $usuario_actual = $i['id_usuario'];
     }
-    echo "<script>alert('Has añadido el producto al carrito');</script>";
     $con->agregarCarrito($usuario_actual, $id_producto);
     $con->restarStock($id_producto);
-
+    header("Location: http://localhost/proyecto_php/index.php");
+}
+//---------------FILTRAR POR CATEGORIAS-----------------
+if(isset($_POST['filtrar'])){
+    $categoria = $_POST['lista_categorias'];
+    if($categoria != 'todo'){
+        $productos = $con->getProductoCategoria($categoria);
+    }else{
+        $productos = $con->getProductos();
+    }
 }
 //----------COLOR ACTUAL DE LA PAGINA-----------
 $color_actual = $con->getColorActual();
